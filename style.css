@@ -1,0 +1,139 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body
+{
+    background-color: rgb(112, 112, 112);
+    height: 100dvh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+.barra-superior {
+    width: 100%; /* Ocupa todo el ancho */
+    height: 70px; /* Altura de la barra */
+    background-color: #000000; /* Color de fondo */
+    position: fixed; /* Fija la barra en la parte superior */
+    top: 0;
+    left: 0;
+    display: flex; /* Usamos flexbox para alinear el logotipo */
+    align-items: center; /* Centra verticalmente el logotipo */
+    padding: 0 20px; /* Agrega espacio a los lados */
+    z-index: 10;
+    }
+    .logo {
+        height: 60px; /* Ajusta la altura del logotipo */
+        margin-right: 20px; /* Agrega espacio a la derecha del logotipo */
+    }
+    
+    
+    .contenido-principal {
+    margin-top: 100px; /* Evita que el contenido se superponga con la barra */
+    }
+    
+    .BI
+    {
+        height: 200px;
+        width: auto;
+        position: fixed;
+        top: 50%; /* Centra verticalmente */
+        left: 1%;
+        transform: translateY(-50%); /* Ajusta el centrado vertical */
+        z-index: 5;
+        
+
+    }
+    .BD
+    {
+        height: 200px;
+        width: auto;
+        position: fixed;
+        top: 50%; /* Centra verticalmente */
+        right: 1%;
+        transform: translateY(-50%); /* Ajusta el centrado vertical */
+        z-index: 5;
+
+    }
+    .BIS
+    {
+        height: 0px;
+        width: auto;
+        position: fixed;
+        top: 50%; /* Centra verticalmente */
+        left: 1%;
+        transform: translateY(-50%); /* Ajusta el centrado vertical */
+        z-index: 5;
+        overflow: hidden;
+
+    }
+    .BDS
+    {
+        height: 0px;
+        width: auto;
+        position: fixed;
+        top: 50%; /* Centra verticalmente */
+        right: 1%;
+        transform: translateY(-50%); /* Ajusta el centrado vertical */
+        z-index: 5;
+        overflow: hidden;
+
+    }
+    
+    .uno
+    {
+        position: absolute;
+        bottom: 10px; /* Ajusta la distancia desde la parte inferior */
+        left: 10px; /* Ajusta la distancia desde la izquierda */
+        font-family: 'sans-serif',
+
+
+    }
+    .libro
+    {
+        
+        display: grid; /* Convierte el contenedor en un contenedor Grid */
+        grid-auto-flow: column; /* Alinea los elementos en columnas (horizontalmente) */
+        justify-content: start; /* Alinea los elementos al inicio del contenedor */
+        justify-content: center, end, space-between, space-around,
+        
+    }
+    .hoja {
+        width: 350px; /* Ancho del rectángulo */
+        height: 500px; /* Alto del rectángulo */
+        background-color: white; /* Color blanco */
+        border: 1px solid #ccc; /* Borde opcional para que sea visible */
+        border-radius: 5px; /* Bordes redondeados opcionales */
+        box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); /* Sombra opcional */
+        position: relative;
+    }
+    @media (max-width: 900px) {
+        .barra-superior {
+            height: 50px;  
+        }
+        .logo {
+            height: 40px; /* Reduce el tamaño del logotipo en pantallas pequeñas */
+        }
+        .BD{
+            height: 0px;
+            overflow: hidden;
+
+        }
+        .BI{
+            height: 0px;
+            overflow: hidden;
+
+        }
+        .BDS{
+            height: 120px;
+            
+
+        }
+        .BIS{
+            height: 120px;
+            
+
+        }
+    }
