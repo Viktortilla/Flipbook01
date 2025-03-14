@@ -142,7 +142,7 @@ body
         
     }
 
-    @media(orientation: portrait ){
+    
         @media (max-width: 900px )  {
             .barra-superior {
                 height: 50px;  
@@ -175,8 +175,3 @@ body
             }
             
         }
-
-    }
-    
-    
-
