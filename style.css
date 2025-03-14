@@ -11,6 +11,7 @@ body
     justify-content: center;
     align-items: center;
     
+    
 }
 .barra-superior {
     width: 100%; /* Ocupa todo el ancho */
@@ -34,27 +35,29 @@ body
     margin-top: 100px; /* Evita que el contenido se superponga con la barra */
     }
     
+    
     .BI
     {
-        height: 200px;
-        width: auto;
+        width: min(35dvw, calc(35dvh * 1 / 2)); /* Adaptación basada en el ancho o el alto */
+        aspect-ratio: 1 / 2; /* Mantiene la proporción */
         position: fixed;
         top: 50%; /* Centra verticalmente */
         left: 1%;
-        transform: translateY(-50%); /* Ajusta el centrado vertical */
+        transform: translateY(-40%); /* Ajusta el centrado vertical */
         z-index: 5;
         
 
     }
     .BD
     {
-        height: 200px;
-        width: auto;
+        width: min(35dvw, calc(35dvh * 1 / 2)); /* Adaptación basada en el ancho o el alto */
+        aspect-ratio: 1 / 2; /* Mantiene la proporción */
         position: fixed;
         top: 50%; /* Centra verticalmente */
         right: 1%;
-        transform: translateY(-50%); /* Ajusta el centrado vertical */
+        transform: translateY(-40%); /* Ajusta el centrado vertical */
         z-index: 5;
+        
 
     }
     .BIS
@@ -82,6 +85,30 @@ body
 
     }
     
+    .BDZS
+    {
+        height: 80px;
+        width: auto;
+        position: fixed;
+        top: 92%; /* Centra verticalmente */
+        right: 10px;
+        transform: translateY(-50%); /* Ajusta el centrado vertical */
+        z-index: 6;
+        
+
+    }
+    .BDZR
+    {
+        height: 80px;
+        width: auto;
+        position: fixed;
+        top: 92%; /* Centra verticalmente */
+        right: 100px;
+        transform: translateY(-50%); /* Ajusta el centrado vertical */
+        z-index: 6;
+        
+
+    }
     .uno
     {
         position: absolute;
@@ -91,6 +118,7 @@ body
 
 
     }
+    
     .libro
     {
         
@@ -101,39 +129,52 @@ body
         
     }
     .hoja {
-        width: 350px; /* Ancho del rectángulo */
-        height: 500px; /* Alto del rectángulo */
+        
+        width: min(80dvw, calc(80dvh * 350 / 500)); /* Adaptación basada en el ancho o el alto */
+  aspect-ratio: 350 / 500; /* Mantiene la proporción */
         background-color: white; /* Color blanco */
         border: 1px solid #ccc; /* Borde opcional para que sea visible */
         border-radius: 5px; /* Bordes redondeados opcionales */
         box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); /* Sombra opcional */
         position: relative;
+
+        transform: translateY(5%);
+        
     }
-    @media (max-width: 900px) {
-        .barra-superior {
-            height: 50px;  
-        }
-        .logo {
-            height: 40px; /* Reduce el tamaño del logotipo en pantallas pequeñas */
-        }
-        .BD{
-            height: 0px;
-            overflow: hidden;
 
-        }
-        .BI{
-            height: 0px;
-            overflow: hidden;
-
-        }
-        .BDS{
-            height: 120px;
+    @media(orientation: portrait ){
+        @media (max-width: 900px )  {
+            .barra-superior {
+                height: 50px;  
+            }
+            .logo {
+                height: 40px; /* Reduce el tamaño del logotipo en pantallas pequeñas */
+            }
+            .BD{
+                height: 0px;
+                overflow: hidden;
+    
+            }
+            .BI{
+                height: 0px;
+                overflow: hidden;
+    
+            }
+            .BDS{
+                height: 120px;
+                
+    
+            }
+            .BIS{
+                height: 120px;
+                
+    
+            }
+            .hoja{
+                width: min(50dvw, calc(50dvh * 350 / 500)); /* Adaptación basada en el ancho o el alto */
+            }
             
-
         }
-        .BIS{
-            height: 120px;
-            
 
-        }
     }
+    
