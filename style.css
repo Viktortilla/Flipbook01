@@ -89,7 +89,7 @@ body
     {
         height: 80px;
         width: auto;
-        position: fixed;
+        position: absolute;
         top: 92%; /* Centra verticalmente */
         right: 10px;
         transform: translateY(-50%); /* Ajusta el centrado vertical */
@@ -101,7 +101,7 @@ body
     {
         height: 80px;
         width: auto;
-        position: fixed;
+        position: absolute;
         top: 92%; /* Centra verticalmente */
         right: 100px;
         transform: translateY(-50%); /* Ajusta el centrado vertical */
@@ -143,7 +143,8 @@ body
     }
 
     
-        @media (max-width: 900px )  {
+    
+        @media (max-width: 1200px )  {
             .barra-superior {
                 height: 50px;  
             }
@@ -170,11 +171,11 @@ body
                 
     
             }
-            .hoja{
-                width: min(50dvw, calc(50dvh * 350 / 500)); /* Adaptación basada en el ancho o el alto */
-            }
+            
             
         }
+
+    
 
     
 
