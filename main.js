@@ -142,7 +142,7 @@ function pageUpdate()
             {
             h1.style.display  = "none";
             h2.style.display  = "block";
-            if(window.innerWidth > 900){
+            if(window.innerWidth > 1200){
                 h3.style.display  = "block";
             }else{
                 h3.style.display  = "none";
@@ -157,7 +157,7 @@ function pageUpdate()
             if(contador==3)
                 {
                 h1.style.display  = "none";
-                if(window.innerWidth > 900){
+                if(window.innerWidth > 1200){
                     h2.style.display  = "block";
                 }else{
                     h2.style.display  = "none";
@@ -176,7 +176,7 @@ function pageUpdate()
                 h2.style.display  = "none";
                 h3.style.display  = "none";
                 h4.style.display  = "block";
-                if(window.innerWidth > 900){
+                if(window.innerWidth > 1200){
                     h5.style.display  = "block";
                 }else{
                     h5.style.display  = "none";
@@ -191,7 +191,7 @@ function pageUpdate()
                     h1.style.display  = "none";
                     h2.style.display  = "none";
                     h3.style.display  = "none";
-                    if(window.innerWidth > 900){
+                    if(window.innerWidth > 1200){
                         h4.style.display  = "block";
                     }else{
                         h4.style.display  = "none";
@@ -210,7 +210,7 @@ function pageUpdate()
                         h4.style.display  = "none";
                         h5.style.display  = "none";
                         h6.style.display  = "block";
-                        if(window.innerWidth > 900){
+                        if(window.innerWidth > 1200){
                             h7.style.display  = "block";
                         }else{
                             h7.style.display  = "none";
@@ -225,7 +225,7 @@ function pageUpdate()
                             h3.style.display  = "none";
                             h4.style.display  = "none";
                             h5.style.display  = "none";
-                            if(window.innerWidth > 900){
+                            if(window.innerWidth > 1200){
                                 h6.style.display  = "block";
                             }else{
                                 h6.style.display  = "none";
