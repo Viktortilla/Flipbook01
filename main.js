@@ -1,11 +1,15 @@
 
 const numerador = document.querySelector("#contador");
+const contenido = document.querySelector("#libro");
 
 const BI = document.querySelector("#BI");
 const BIS = document.querySelector("#BIS");
 
 const BD = document.querySelector("#BD");
 const BDS = document.querySelector("#BDS");
+
+const BDZS = document.querySelector("#BDZS");
+const BDZR = document.querySelector("#BDZR");
 
 const h1 = document.querySelector("#hoja1");
 const h2 = document.querySelector("#hoja2");
@@ -20,9 +24,12 @@ BIS.addEventListener("click", bis);
 BDS.addEventListener("click", bds);
 BI.addEventListener("click", bi);
 BD.addEventListener("click", bd);
+BDZS.addEventListener("click", zoomS);
+BDZR.addEventListener("click", zoomR);
 
 
 let contador = 1;
+let contadorZoom = 1;
 let max = 8;
 
     h1.style.display  = "block";
@@ -231,4 +238,20 @@ function pageUpdate()
     
     
 
+}
+function zoomS(){
+
+    if(contadorZoom<2){
+        contadorZoom=contadorZoom+0.25;
+    }
+    
+    contenido.style.transform = `scale(${contadorZoom})`;
+}
+function zoomR(){
+
+    if(contadorZoom>0.25){
+        contadorZoom=contadorZoom-0.25;
+    }
+    
+    contenido.style.transform = `scale(${contadorZoom})`;
 }
