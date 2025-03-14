@@ -38,8 +38,8 @@ body
     
     .BI
     {
-        width: min(35dvw, calc(35dvh * 1 / 2)); /* Adaptación basada en el ancho o el alto */
-        aspect-ratio: 1 / 2; /* Mantiene la proporción */
+        height: 120px;
+        width: auto;
         position: fixed;
         top: 50%; /* Centra verticalmente */
         left: 1%;
@@ -50,8 +50,8 @@ body
     }
     .BD
     {
-        width: min(35dvw, calc(35dvh * 1 / 2)); /* Adaptación basada en el ancho o el alto */
-        aspect-ratio: 1 / 2; /* Mantiene la proporción */
+        height: 120px;
+        width: auto;
         position: fixed;
         top: 50%; /* Centra verticalmente */
         right: 1%;
@@ -161,12 +161,12 @@ body
     
             }
             .BDS{
-                height: 120px;
+                height: 100px;
                 
     
             }
             .BIS{
-                height: 120px;
+                height: 100px;
                 
     
             }
@@ -175,3 +175,8 @@ body
             }
             
         }
+
+    
+
+    
+
