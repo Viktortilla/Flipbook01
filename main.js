@@ -9,8 +9,7 @@ const paper2 = document.querySelector("#p2");
 const paper3 = document.querySelector("#p3");
 const paper4 = document.querySelector("#p4");
 
-const zoomInB = document.querySelector("#zoomIn");
-const zoomOutB = document.querySelector("#zoomOut");
+
 
 
 
@@ -21,8 +20,7 @@ prevBtn.style.display="none";
 prevBtn.addEventListener("click", goPrevPage);
 nextBtn.addEventListener("click", goNextPage);
 
-zoomInB.addEventListener("click", zoomIn);
-zoomOutB.addEventListener("click", zoomOut);
+
 
 // Business Logic
 let currentLocation = 1;
@@ -136,26 +134,18 @@ function goPrevPage() {
         }
     }
 }
-function zoomIn() {
-    if(escala<1.3)
-        {
-            escala+=0.1;
-        }
-        content.style.transform =`scale(${escala})`;
-}
-function zoomOut() {
-    if(escala>0.2)
-        {
-            escala-=0.1;
-        }
-        content.style.transform =`scale(${escala})`;
-}
+
 function responcive(){
-    if(window.innerWidth<768 && open==true){
+    if(window.innerWidth<850 && open==true){
         prevBtn.style.transform = "translateX(-100px)";
         nextBtn.style.transform = "translateX(100px)";
     }
-    if(window.innerWidth>=768 && open==true){
+    if(window.innerWidth<480 && open==true)
+    {
+        prevBtn.style.transform = "translateX(-50px)";
+        nextBtn.style.transform = "translateX(50px)";
+    }
+    if(window.innerWidth>=850 && open==true){
         prevBtn.style.transform = "translateX(-180px)";
         nextBtn.style.transform = "translateX(180px)";
     }

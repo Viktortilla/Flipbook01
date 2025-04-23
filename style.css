@@ -16,18 +16,25 @@ body {
 
     overflow: hidden;
 }
+
 .barra{
     
     top: 0;
     
     height: 10vh;
-    width: 100vw;
+    width: 100dvw;
     background-color: black;
     z-index: 100;
 }
-@media (max-width: 768px) {
+@media (max-width: 850px) {
     .barra{
       height: 5vh; /* Reduce la altura en pantallas más pequeñas */
+    }
+    
+}
+@media (max-width: 480) {
+    .barra{
+      height: 4vh; /* Reduce la altura en pantallas más pequeñas */
     }
     
 }
@@ -35,65 +42,30 @@ body {
 .content{
     
     height: 90vh;
-    width: 100vw;
+    width: 100dvw;
     display: flex;
     justify-content: center;
     align-items: center;
     transform-origin: center center;
     
-    
+    overflow: hidden;
 
 }
-@media (max-width: 768px) {
+@media (max-width: 850px) {
     .content{
       height: 95vh; /* Reduce la altura en pantallas más pequeñas */
     }
     
 }
-.Bzoom{
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    margin: 20px;
-    height: 50px;
-    width: 150px;
-    z-index: 99;
-    
-    display: flex;
-}
-@media (max-width: 768px) {
-    .Bzoom{
-        margin: 15px;
-        height: 42px;
-        width: 113px;
+@media (max-width: 480px) {
+    .content{
+      height: 96vh; /* Reduce la altura en pantallas más pequeñas */
     }
     
 }
-.BzoomImg{
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    object-fit: fill;
-    
-}
-.zoomOut{
-    width: 50%;
-    height: 100%;
-    background: rgba(255, 0, 0, 0);
-    
-    z-index: 5;
-    margin: 0;
 
-}
-.zoomIn{
-    width: 50%;
-    height: 100%;
-    background: rgba(34, 0, 255, 0);
-    
-    z-index: 5;
-    margin: 0;
 
-}
+
     
 .logo{
     height: 100%;
@@ -111,10 +83,18 @@ body {
     transition: transform 0.5s;
     margin: 0;
 }
-@media (max-width: 768px) {
+@media (max-width: 850px) {
     .book{
         width: 182.5px;
         height: 250px;
+        margin: 0;
+    }
+    
+}
+@media (max-width: 480px) {
+    .book{
+        width: 73px;
+        height: 100px;
         margin: 0;
     }
     
@@ -183,6 +163,7 @@ button {
     transition: transform 0.5s;
     width: 50px;
     height: 75px;
+    
 
 
 }
