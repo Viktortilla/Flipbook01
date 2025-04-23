@@ -1,257 +1,166 @@
+// References to DOM Elements
+const prevBtn = document.querySelector("#prev-btn");
+const nextBtn = document.querySelector("#next-btn");
+const book = document.querySelector("#book");
+const content = document.querySelector("#content");
 
-const numerador = document.querySelector("#contador");
-const contenido = document.querySelector("#libro");
+const paper1 = document.querySelector("#p1");
+const paper2 = document.querySelector("#p2");
+const paper3 = document.querySelector("#p3");
+const paper4 = document.querySelector("#p4");
 
-const BI = document.querySelector("#BI");
-const BIS = document.querySelector("#BIS");
-
-const BD = document.querySelector("#BD");
-const BDS = document.querySelector("#BDS");
-
-const BDZS = document.querySelector("#BDZS");
-const BDZR = document.querySelector("#BDZR");
-
-const h1 = document.querySelector("#hoja1");
-const h2 = document.querySelector("#hoja2");
-const h3 = document.querySelector("#hoja3");
-const h4 = document.querySelector("#hoja4");
-const h5 = document.querySelector("#hoja5");
-const h6 = document.querySelector("#hoja6");
-const h7 = document.querySelector("#hoja7");
-const h8 = document.querySelector("#hoja8");
-
-BIS.addEventListener("click", bis);
-BDS.addEventListener("click", bds);
-BI.addEventListener("click", bi);
-BD.addEventListener("click", bd);
-BDZS.addEventListener("click", zoomS);
-BDZR.addEventListener("click", zoomR);
+const zoomInB = document.querySelector("#zoomIn");
+const zoomOutB = document.querySelector("#zoomOut");
 
 
-let contador = 1;
-let contadorZoom = 1;
-let max = 8;
 
-    h1.style.display  = "block";
-    h2.style.display  = "none";
-    h3.style.display  = "none";
-    h4.style.display  = "none";
-    h5.style.display  = "none";
-    h6.style.display  = "none";
-    h7.style.display  = "none";
-    h8.style.display  = "none";
+// Event Listener
+window.addEventListener('resize',responcive);
+
+prevBtn.style.display="none";
+prevBtn.addEventListener("click", goPrevPage);
+nextBtn.addEventListener("click", goNextPage);
+
+zoomInB.addEventListener("click", zoomIn);
+zoomOutB.addEventListener("click", zoomOut);
+
+// Business Logic
+let currentLocation = 1;
+let numOfPapers = 4;
+let maxLocation = numOfPapers + 1;
+
+let open =false;
+
+let escala =1;
+
+function openBook() {
+    book.style.transform = "translateX(50%)";
+    open = true;
+    responcive();
     
-    window.addEventListener('resize', function() {
-        pageUpdate()
-      });
-
-
-function bis()
-{
-    if(contador>1)
-    {
-        contador--;
-        
-    }
-    pageUpdate()
-
 }
-function bds()
-{
-    if(contador<max)
-    {
-        contador++;
-        
-    }
-    pageUpdate()
 
+function closeBook(isAtBeginning) {
+    if(isAtBeginning) {
+        book.style.transform = "translateX(0%)";
+    } else {
+        book.style.transform = "translateX(100%)";
+    }
+    
+    prevBtn.style.transform = "translateX(0px)";
+    nextBtn.style.transform = "translateX(0px)";
+    open =false;
 }
-function bi()
-{
-    if(contador==max)
-    {
-        contador= contador-1;
-        
-    }
-    else if(contador%2!=0 && contador>1)
-    {
-        contador= contador-2;
-        
 
-    }
-    if(contador!=max && contador>1 && contador%2==0)
-    {
-        contador= contador-1;
-        
-
-    }
-    pageUpdate()
-
-}
-function bd()
-{
-    if(contador==1)
-        {
-            contador= contador+1;
-            
+function goNextPage() {
+    
+    if(currentLocation < maxLocation) {
+        switch(currentLocation) {
+            case 1:
+                openBook();
+                paper1.classList.add("flipped");
+                paper1.style.zIndex = 4;
+                break;
+            case 2:
+                paper2.classList.add("flipped");
+                paper1.style.zIndex = 3;
+                paper2.style.zIndex = 4;
+                break;
+            case 3:
+                paper3.classList.add("flipped");
+                paper1.style.zIndex = 2;
+                paper2.style.zIndex = 3;
+                paper3.style.zIndex = 4;
+                break;
+                case 4:
+                paper4.classList.add("flipped");
+                paper1.style.zIndex = 1;
+                paper2.style.zIndex = 2;
+                paper3.style.zIndex = 3;
+                paper4.style.zIndex = 4;
+                closeBook(false);
+                break;
+            default:
+                throw new Error("unkown state");
         }
-        else if(contador%2==0 && contador<max)
-        {
-            contador= contador+2;
-            
-    
+        currentLocation++;
+
+        if(currentLocation == maxLocation){
+            nextBtn.style.display="none";
         }
-        if(contador!=1 && contador<max && contador%2!=0)
-        {
-            contador= contador+1;
-            
-    
+        if(currentLocation != 1){
+            prevBtn.style.display="block";
         }
-        pageUpdate()
         
+    }
 }
-function pageUpdate()
-{
-    if(contador==1)
-    {
-    h1.style.display  = "block";
-    h2.style.display  = "none";
-    h3.style.display  = "none";
-    h4.style.display  = "none";
-    h5.style.display  = "none";
-    h6.style.display  = "none";
-    h7.style.display  = "none";
-    h8.style.display  = "none";
-    
+
+function goPrevPage() {
+    if(currentLocation > 1) {
+        switch(currentLocation) {
+            case 2:
+                closeBook(true);
+                paper1.classList.remove("flipped");
+                paper4.style.zIndex = 1;
+                paper3.style.zIndex = 2;
+                paper2.style.zIndex = 3;    
+                paper1.style.zIndex = 4;
+                break;
+            case 3:
+                paper2.classList.remove("flipped");
+                paper4.style.zIndex = 2;
+                paper3.style.zIndex = 3;
+                paper2.style.zIndex = 4;
+                break;
+            case 4:
+                openBook();
+                paper3.classList.remove("flipped");
+                paper4.style.zIndex = 3;
+                paper3.style.zIndex = 4;
+                break;
+                case 5:
+                    openBook();
+                    paper4.classList.remove("flipped");
+                    paper4.style.zIndex = 4;
+                    break;
+            default:
+                throw new Error("unkown state");
+        }
+
+        currentLocation--;
+        if(currentLocation != maxLocation){
+            nextBtn.style.display="block";
+        }
+        if(currentLocation == 1){
+            prevBtn.style.display="none";
+        }
     }
-    if(contador==max)
-    {
-    h1.style.display  = "none";
-    h2.style.display  = "none";
-    h3.style.display  = "none";
-    h4.style.display  = "none";
-    h5.style.display  = "none";
-    h6.style.display  = "none";
-    h7.style.display  = "none";
-    h8.style.display  = "block";
-
-    }
-    
-    
-        if(contador==2)
-            {
-            h1.style.display  = "none";
-            h2.style.display  = "block";
-            if(window.innerWidth > 1200){
-                h3.style.display  = "block";
-            }else{
-                h3.style.display  = "none";
-            }
-            h4.style.display  = "none";
-            h5.style.display  = "none";
-            h6.style.display  = "none";
-            h7.style.display  = "none";
-            h8.style.display  = "none";
-        
-            }
-            if(contador==3)
-                {
-                h1.style.display  = "none";
-                if(window.innerWidth > 1200){
-                    h2.style.display  = "block";
-                }else{
-                    h2.style.display  = "none";
-                }
-                h3.style.display  = "block";
-                h4.style.display  = "none";
-                h5.style.display  = "none";
-                h6.style.display  = "none";
-                h7.style.display  = "none";
-                h8.style.display  = "none";
-            
-                }
-                if(contador==4)
-                {
-                h1.style.display  = "none";
-                h2.style.display  = "none";
-                h3.style.display  = "none";
-                h4.style.display  = "block";
-                if(window.innerWidth > 1200){
-                    h5.style.display  = "block";
-                }else{
-                    h5.style.display  = "none";
-                }
-                h6.style.display  = "none";
-                h7.style.display  = "none";
-                h8.style.display  = "none";
-            
-                }
-                if(contador==5)
-                    {
-                    h1.style.display  = "none";
-                    h2.style.display  = "none";
-                    h3.style.display  = "none";
-                    if(window.innerWidth > 1200){
-                        h4.style.display  = "block";
-                    }else{
-                        h4.style.display  = "none";
-                    }
-                    h5.style.display  = "block";
-                    h6.style.display  = "none";
-                    h7.style.display  = "none";
-                    h8.style.display  = "none";
-                
-                    }
-                    if(contador==6)
-                        {
-                        h1.style.display  = "none";
-                        h2.style.display  = "none";
-                        h3.style.display  = "none";
-                        h4.style.display  = "none";
-                        h5.style.display  = "none";
-                        h6.style.display  = "block";
-                        if(window.innerWidth > 1200){
-                            h7.style.display  = "block";
-                        }else{
-                            h7.style.display  = "none";
-                        }
-                        h8.style.display  = "none";
-                    
-                        }
-                        if(contador==7)
-                            {
-                            h1.style.display  = "none";
-                            h2.style.display  = "none";
-                            h3.style.display  = "none";
-                            h4.style.display  = "none";
-                            h5.style.display  = "none";
-                            if(window.innerWidth > 1200){
-                                h6.style.display  = "block";
-                            }else{
-                                h6.style.display  = "none";
-                            }
-                            h7.style.display  = "block";
-                            h8.style.display  = "none";
-                        
-                            }        
-
-    
-    
-
 }
-function zoomS(){
-
-    if(contadorZoom<2){
-        contadorZoom=contadorZoom+0.25;
-    }
-    
-    contenido.style.transform = `scale(${contadorZoom})`;
+function zoomIn() {
+    if(escala<1.3)
+        {
+            escala+=0.1;
+        }
+        content.style.transform =`scale(${escala})`;
 }
-function zoomR(){
-
-    if(contadorZoom>0.25){
-        contadorZoom=contadorZoom-0.25;
+function zoomOut() {
+    if(escala>0.2)
+        {
+            escala-=0.1;
+        }
+        content.style.transform =`scale(${escala})`;
+}
+function responcive(){
+    if(window.innerWidth<768 && open==true){
+        prevBtn.style.transform = "translateX(-100px)";
+        nextBtn.style.transform = "translateX(100px)";
     }
-    
-    contenido.style.transform = `scale(${contadorZoom})`;
+    if(window.innerWidth>=768 && open==true){
+        prevBtn.style.transform = "translateX(-180px)";
+        nextBtn.style.transform = "translateX(180px)";
+    }
+    if(open==false){
+        prevBtn.style.transform = "translateX(0px)";
+        nextBtn.style.transform = "translateX(0px)";
+    }
 }
