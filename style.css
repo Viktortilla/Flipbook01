@@ -25,6 +25,8 @@ body {
     width: 100dvw;
     background-color: black;
     z-index: 100;
+
+    overflow: auto;
 }
 @media (max-width: 850px) {
     .barra{
@@ -33,6 +35,18 @@ body {
     
 }
 @media (max-width: 480) {
+    .barra{
+      height: 4vh; /* Reduce la altura en pantallas más pequeñas */
+    }
+    
+}
+@media (max-height: 570px) {
+    .barra{
+      height: 5vh; /* Reduce la altura en pantallas más pequeñas */
+    }
+    
+}
+@media (max-height: 270) {
     .barra{
       height: 4vh; /* Reduce la altura en pantallas más pequeñas */
     }
@@ -63,6 +77,18 @@ body {
     }
     
 }
+@media (max-height: 570px) {
+    .content{
+      height: 95vh; /* Reduce la altura en pantallas más pequeñas */
+    }
+    
+}
+@media (max-height: 270px) {
+    .content{
+      height: 96vh; /* Reduce la altura en pantallas más pequeñas */
+    }
+    
+}
 
 
 
@@ -71,6 +97,7 @@ body {
     height: 100%;
     width: auto;
     margin-left: 20px;
+    object-fit: cover;
 }
 
 
@@ -92,6 +119,22 @@ body {
     
 }
 @media (max-width: 480px) {
+    .book{
+        width: 73px;
+        height: 100px;
+        margin: 0;
+    }
+    
+}
+@media (max-height: 570px) {
+    .book{
+        width: 182.5px;
+        height: 250px;
+        margin: 0;
+    }
+    
+}
+@media (max-height: 270px) {
     .book{
         width: 73px;
         height: 100px;
