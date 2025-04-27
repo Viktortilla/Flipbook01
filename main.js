@@ -160,12 +160,12 @@ function goPrevPage() {
 
 function responcive(){
     if(open==true){
-        prevBtn.style.transform =  "scaleX(1)";
-        nextBtn.style.transform =  "scaleX(1)";
+        nextBtn.style.width = "50%";
+        nextBtn.style.width = "50%";
     }
     
     if(open==false){
-        prevBtn.style.transform = "scaleX(3)";
-        nextBtn.style.transform = "scaleX(3)";
+        nextBtn.style.width = "100%";
+        nextBtn.style.width = "100%";
     }
 }
