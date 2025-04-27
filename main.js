@@ -1,5 +1,6 @@
 // References to DOM Elements
 const prevBtn = document.querySelector("#prev-btn");
+const prevBtn2 = document.querySelector("#prev-btn2");
 const nextBtn = document.querySelector("#next-btn");
 const book = document.querySelector("#book");
 const content = document.querySelector("#content");
@@ -8,6 +9,16 @@ const paper1 = document.querySelector("#p1");
 const paper2 = document.querySelector("#p2");
 const paper3 = document.querySelector("#p3");
 const paper4 = document.querySelector("#p4");
+
+const f1 = document.querySelector("#f1");
+const f2 = document.querySelector("#f2");
+const f3 = document.querySelector("#f3");
+const f4 = document.querySelector("#f4");
+
+const b1 = document.querySelector("#b1");
+const b2 = document.querySelector("#b2");
+const b3 = document.querySelector("#b3");
+const b4 = document.querySelector("#b4");
 
 
 
@@ -18,7 +29,10 @@ window.addEventListener('resize',responcive);
 
 prevBtn.style.display="none";
 prevBtn.addEventListener("click", goPrevPage);
+prevBtn2.addEventListener("click", goPrevPage);
 nextBtn.addEventListener("click", goNextPage);
+p4.addEventListener("click", goPrevPage);
+
 
 
 
@@ -28,7 +42,7 @@ let numOfPapers = 4;
 let maxLocation = numOfPapers + 1;
 
 let open =false;
-
+responcive();
 let escala =1;
 
 function openBook() {
@@ -48,6 +62,8 @@ function closeBook(isAtBeginning) {
     prevBtn.style.transform = "translateX(0px)";
     nextBtn.style.transform = "translateX(0px)";
     open =false;
+    responcive()
+    
 }
 
 function goNextPage() {
@@ -58,6 +74,7 @@ function goNextPage() {
                 openBook();
                 paper1.classList.add("flipped");
                 paper1.style.zIndex = 4;
+                f2.style.zIndex=5;
                 break;
             case 2:
                 paper2.classList.add("flipped");
@@ -88,6 +105,9 @@ function goNextPage() {
         }
         if(currentLocation != 1){
             prevBtn.style.display="block";
+        }
+        if(currentLocation == 5){
+            prevBtn.style.display="none";
         }
         
     }
@@ -132,25 +152,20 @@ function goPrevPage() {
         if(currentLocation == 1){
             prevBtn.style.display="none";
         }
+        if(currentLocation != 1){
+            prevBtn.style.display="block";
+        }
     }
 }
 
 function responcive(){
-    if(window.innerWidth<850 && open==true){
-        prevBtn.style.transform = "translateX(-100px)";
-        nextBtn.style.transform = "translateX(100px)";
+    if(open==true){
+        prevBtn.style.transform =  "scaleX(1)";
+        nextBtn.style.transform =  "scaleX(1)";
     }
-    if(window.innerWidth<480 && open==true)
-    {
-        prevBtn.style.transform = "translateX(-50px)";
-        nextBtn.style.transform = "translateX(50px)";
-    }
-    if(window.innerWidth>=850 && open==true){
-        prevBtn.style.transform = "translateX(-180px)";
-        nextBtn.style.transform = "translateX(180px)";
-    }
+    
     if(open==false){
-        prevBtn.style.transform = "translateX(0px)";
-        nextBtn.style.transform = "translateX(0px)";
+        prevBtn.style.transform = "scaleX(3)";
+        nextBtn.style.transform = "scaleX(3)";
     }
 }
