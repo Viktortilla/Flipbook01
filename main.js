@@ -20,6 +20,10 @@ const b2 = document.querySelector("#b2");
 const b3 = document.querySelector("#b3");
 const b4 = document.querySelector("#b4");
 
+const link1 = document.querySelector("#link1");
+const link2 = document.querySelector("#link2");
+const link3 = document.querySelector("#link3");
+
 
 
 
@@ -31,7 +35,11 @@ prevBtn.style.display="none";
 prevBtn.addEventListener("click", goPrevPage);
 prevBtn2.addEventListener("click", goPrevPage);
 nextBtn.addEventListener("click", goNextPage);
+link1.addEventListener("click", linkPress);
+link2.addEventListener("click", linkPress);
+link3.addEventListener("click", linkPress);
 p4.addEventListener("click", goPrevPage);
+
 
 
 
@@ -40,6 +48,8 @@ p4.addEventListener("click", goPrevPage);
 let currentLocation = 1;
 let numOfPapers = 4;
 let maxLocation = numOfPapers + 1;
+
+let linkCounter = 0;
 
 let open =false;
 responcive();
@@ -137,9 +147,18 @@ function goPrevPage() {
                 paper3.style.zIndex = 4;
                 break;
                 case 5:
-                    openBook();
-                    paper4.classList.remove("flipped");
-                    paper4.style.zIndex = 4;
+                    if(linkCounter!=0)
+                        {
+                            linkCounter=0;
+                            
+
+                        }
+                        else{
+                            openBook();
+                            paper4.classList.remove("flipped");
+                            paper4.style.zIndex = 4;
+                        }
+                    
                     break;
             default:
                 throw new Error("unkown state");
@@ -168,4 +187,8 @@ function responcive(){
         nextBtn.style.width = "100%";
         nextBtn.style.width = "100%";
     }
+}
+function linkPress() {
+    linkCounter=1;
+    
 }
